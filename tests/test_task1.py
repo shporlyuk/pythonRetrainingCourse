@@ -15,3 +15,9 @@ def test_to_hours(minutes, hours):
 @pytest.mark.parametrize("num1, num2, expected", [(12, 3, True), (3, 2, False), (100, 5, True)])
 def test_is_whole_div(num1, num2, expected):
     assert is_whole_div(num1, num2) == expected
+
+
+@pytest.mark.parametrize("num1, num2, exception", [(1, 0, InvalidDivisionException), ("g", 1, InvalidInputError)])
+def test_is_whole_div_raises_exception(num1, num2, exception):
+    with pytest.raises(exception):
+        is_whole_div(num1, num2)
